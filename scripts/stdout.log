@@ -1,0 +1,89 @@
+2024-04-09 10:13:49,397 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 10:13:49,399 - logger - INFO - Command-line arguments: Namespace(L=2000, M=1000, N=100)
+2024-04-09 10:14:52,858 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 10:14:52,860 - logger - INFO - Command-line arguments: Namespace(L=2000, M=1000, N=100)
+2024-04-09 10:14:52,971 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 10:15:41,963 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 10:15:41,965 - logger - INFO - Command-line arguments: Namespace(L=2000, M=1000, N=100)
+2024-04-09 10:15:42,071 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 10:15:55,628 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 10:15:55,629 - logger - INFO - Command-line arguments: Namespace(L=2000, M=1000, N=100)
+2024-04-09 10:15:55,689 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 10:16:58,635 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 10:16:58,637 - logger - INFO - Command-line arguments: Namespace(L=2000, M=1000, N=100)
+2024-04-09 10:16:58,749 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 10:32:46,073 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 10:32:46,075 - logger - INFO - Command-line arguments: Namespace(L=2000, M=1000, N=100)
+2024-04-09 10:32:46,182 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 10:33:35,386 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 10:33:35,390 - logger - INFO - Command-line arguments: Namespace(L=4000, M=2000, N=200)
+2024-04-09 10:33:35,634 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 10:36:53,598 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 10:36:53,612 - logger - INFO - Command-line arguments: Namespace(L=10000, M=5000, N=400)
+2024-04-09 10:36:55,200 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 10:53:51,021 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 10:53:51,044 - logger - INFO - Command-line arguments: Namespace(L=10000, M=5000, N=400)
+2024-04-09 10:53:53,733 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 11:12:44,500 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 11:12:44,501 - logger - INFO - Command-line arguments: Namespace(L=2000, M=1000, N=100)
+2024-04-09 11:12:44,568 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 11:12:59,402 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 11:12:59,404 - logger - INFO - Command-line arguments: Namespace(L=2000, M=1000, N=100)
+2024-04-09 11:12:59,514 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 11:14:14,086 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 11:14:14,088 - logger - INFO - Command-line arguments: Namespace(L=2000, M=1000, N=100)
+2024-04-09 11:14:14,169 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 11:14:48,125 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 11:14:48,131 - logger - INFO - Command-line arguments: Namespace(L=4000, M=2000, N=200)
+2024-04-09 11:14:48,551 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 11:17:41,973 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 11:17:41,977 - logger - INFO - Command-line arguments: Namespace(L=4000, M=2000, N=200)
+2024-04-09 11:17:42,231 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 11:18:04,062 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 11:18:04,091 - logger - INFO - Command-line arguments: Namespace(L=10000, M=5000, N=500)
+2024-04-09 11:18:06,920 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 11:19:19,368 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 11:19:19,380 - logger - INFO - Command-line arguments: Namespace(L=5000, M=5000, N=200)
+2024-04-09 11:19:20,813 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 11:19:58,033 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 11:19:58,041 - logger - INFO - Command-line arguments: Namespace(L=5000, M=5000, N=200)
+2024-04-09 11:19:58,824 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 11:25:56,529 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 11:25:56,536 - logger - INFO - Command-line arguments: Namespace(L=5000, M=5000, N=100)
+2024-04-09 11:25:57,908 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:19:46,812 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:19:46,817 - logger - INFO - Command-line arguments: Namespace(L=4000, M=2000, N=400)
+2024-04-09 12:19:47,085 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:25:51,466 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:25:51,466 - logger - INFO - Command-line arguments: Namespace(L=400, M=200, N=40)
+2024-04-09 12:25:51,470 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:26:01,914 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:26:01,914 - logger - INFO - Command-line arguments: Namespace(L=200, M=100, N=10)
+2024-04-09 12:26:01,915 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:26:26,977 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:26:26,980 - logger - INFO - Command-line arguments: Namespace(L=4000, M=2000, N=200)
+2024-04-09 12:26:27,223 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:30:45,454 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:30:45,460 - logger - INFO - Command-line arguments: Namespace(L=3000, M=2000, N=200)
+2024-04-09 12:30:45,782 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:31:36,113 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:31:36,121 - logger - INFO - Command-line arguments: Namespace(L=3000, M=2000, N=200)
+2024-04-09 12:31:36,494 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:34:31,710 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:34:31,716 - logger - INFO - Command-line arguments: Namespace(L=2000, M=2000, N=200)
+2024-04-09 12:34:31,926 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:37:41,013 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:37:41,018 - logger - INFO - Command-line arguments: Namespace(L=2000, M=2000, N=200)
+2024-04-09 12:37:41,235 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:40:15,119 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:40:15,122 - logger - INFO - Command-line arguments: Namespace(L=2000, M=2000, N=100)
+2024-04-09 12:40:15,344 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:42:17,865 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:42:17,868 - logger - INFO - Command-line arguments: Namespace(L=2000, M=2000, N=100)
+2024-04-09 12:42:18,081 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:44:36,845 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:44:36,851 - logger - INFO - Command-line arguments: Namespace(L=4000, M=2000, N=200)
+2024-04-09 12:44:37,271 - logger - INFO - Complete generating all the r.v.s
+2024-04-09 12:49:39,817 - logger - INFO - Parameter Sets: v = 0.5; r = 0.04; kappa = 1.5; theta = 0.2; sigmav = 0.25; lambda_ = 0.5; rho = -0.8; gamma = 2
+2024-04-09 12:49:39,818 - logger - INFO - Command-line arguments: Namespace(L=2000, M=1000, N=100)
+2024-04-09 12:49:39,879 - logger - INFO - Complete generating all the r.v.s

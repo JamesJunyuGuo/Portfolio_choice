@@ -35,9 +35,10 @@ def parse_args():
     return args
 
 
-logger = setup_logger("logger", log_file="simulation.log", level=logging.DEBUG)
+
 # CEVSV model parameters
 args = parse_args()
+logger = setup_logger("logger", log_file="stdout.log", level=logging.DEBUG)
 # simulation parameters
 M = args.M 
 N = args.N 
@@ -63,10 +64,6 @@ assert np.allclose(y_N, y_0 + delta_y * N)
 sqrt_delta_t = np.sqrt(delta_t)
 
 ### line 5 to line 28: set environment variables 
-logger.info(    f'Parameter Sets: \
-v = {v}; r = {r}; kappa = {kappa}; \
-theta = {theta}; sigmav = {sigmav}; \
-lambda_ = {lambda_}; rho = {rho}; gamma = {gamma}')
 
 
 # global constant expressions
@@ -341,11 +338,10 @@ def simu_thetau(theta_u, theta_uy, z1, z2):
 
         # output thetau value to show the progress
         if i % 10 == 0:
-            logger.info("%s %s %s", i, N // 4, theta_u[i][N // 4])
+            print( i, N // 4, theta_u[i][N // 4])
 
     # the simualted value of each path at the final time step
     # is returned in order to calculate standard error
-    return xi, xiHtheta
 
 
 
@@ -374,19 +370,12 @@ def get_true_theta_u(tau, y):
 
 if __name__ == '__main__':
     
-    
-    
-    
+    logger.info(    f'Parameter Sets: v = {v}; r = {r}; kappa = {kappa}; theta = {theta}; sigmav = {sigmav}; lambda_ = {lambda_}; rho = {rho}; gamma = {gamma}')
     true_thetau = get_true_theta_u.outer(np.arange(M, -1, -1) * delta_t, np.arange(0, N+1)*delta_y + y_0)
-    print(true_thetau.shape)
-
-        
-
+    logger.info("Command-line arguments: %s", args)
     # set a random seed
     np.random.seed(seed=50)
     
-   
-
     # initialize thetau and its first derivative with respect to y
     theta_u = np.zeros((M+1, N+1), np.float64)
     theta_uy = np.zeros((M+1, N+1), np.float64)
@@ -394,16 +383,14 @@ if __name__ == '__main__':
     # independent standard normal values
     z1 = np.random.standard_normal(size=(L, M+1))
     z2 = np.random.standard_normal(size=(L, M+1))
-    print("Complete generating all the r.v.s")
-    print("----------------------------")
-
+    logger.info("Complete generating all the r.v.s")
     # start the simualtion
-    xi, xiHtheta = simu_thetau(theta_u, theta_uy, z1, z2)
+    simu_thetau(theta_u, theta_uy, z1, z2)
     
     theta_difference = theta_u - true_thetau
 
     # save result
-    postfix = f'CEVSV;v{v};sigmav{sigmav};M{M};N{N};L{L};deltat{delta_t};deltay{delta_y};'
+    postfix = f'CEVSV;L{L};M{M};N{N}'
     np.savetxt(f'./Result/theta_u{postfix}.csv', theta_u, delimiter=',')
     np.savetxt(f'./Result/true_theta_u{postfix}.csv', true_thetau, delimiter=',')
     np.savetxt(f'./Result/diff_theta_u{postfix}.csv', theta_difference, delimiter=',')

@@ -1,0 +1,74 @@
+def simu_thetau(theta_u, theta_uy, z1, z2):  
+    zmix = (rho * z1 + sqrt_1subrho2 * z2)  # (L, M+1)
+    L, M = zmix.shape[0], zmix.shape[1] - 1  # make the variable local to make numba happy
+
+    Y_0 = np.arange(0, N+1) * delta_y + y_0
+    DY_0 = sigmav * (Y_0**v) * sqrt_1subrho2
+
+
+    logxih = np.zeros((L, N+1))
+    Hthetah = np.zeros((L, N+1))
+
+    xi = np.empty((L, N+1))
+    xiHtheta = np.empty((L, N+1))
+    
+
+    for i in range(M-1, -1, -1):   ## backward simulation 
+
+        m = M-i
+
+        theta_ui = theta_u[i:]
+        theta_uyi = theta_uy[i:]
+
+        # parallel section
+        # prange is based on OpenMP
+        for l in nb.prange(L):
+            # standard normal values
+            zmix_i = zmix[l, 1:m+1]
+            z1_i = z1[l, 1:m+1]
+            z2_i = z2[l, 1:m+1]
+
+            for j in range(0, N+1):
+
+                # initial value
+                Y_k = Y_0[j]
+                DY_k = DY_0[j]   
+
+                # To calculate $log(\xi^u)$ and $H_{\theta}^u$,
+                # it is necessary to evaluate across the full simualtion path.
+                logxiu = 0.
+                Hthetau = 0.
+                for k in range(m-1):
+                    # thetau and thetauy at simualted future state value
+                    theta_u_k, theta_uy_k = get_thetau(theta_ui[k], theta_uyi[k], Y_k)
+
+                    logxiu += next_logxiu(theta_u_k, z2_i[k])
+                    Hthetau += next_Hthetau(theta_u_k, theta_uy_k, DY_k, z2_i[k])
+                    
+                    
+                    DY_k = next_DYs(DY_k, Y_k, zmix_i[k])
+                    Y_k = next_Ys(Y_k, zmix_i[k])
+
+            
+                theta_h_k = get_thetah(Y_k)
+                logxih[l, j] = logxih[l, j] + next_logxih(theta_h_k, z1_i[-1])
+                Hthetah[l, j] = Hthetah[l, j] + next_Hthetah(theta_h_k, DY_k, z1_i[-1])
+                
+                xi_tmp = np.exp(logxih[l, j] + logxiu)
+                Htheta_tmp = Hthetah[l, j] + Hthetau
+
+                
+                xi[l, j] =  xi_tmp
+                xiHtheta[l, j] = xi_tmp * Htheta_tmp
+        
+    
+        xi_sum = xi.sum(axis=0)
+        xiHtheta_sum = xiHtheta.sum(axis=0)
+        theta_u[i] = (gamma - 1.) * xiHtheta_sum / xi_sum
+        theta_uy[i] = get_theta_uy(theta_u[i])
+
+        if i % 10 == 0:
+            print( i, N // 4, theta_u[i][N // 4])
+
+
+    
