@@ -2,6 +2,30 @@ import os
 import numpy as np  # scientific computing module with Python
 import numba as nb  # high performance Python compiler
 import argparse
+import logging
+
+def setup_logger(name, log_file=None, level=logging.INFO):
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    
+    logger = logging.getLogger(name)
+    logger.setLevel(level)
+    
+    # Create console handler and set level to debug
+    ch = logging.StreamHandler()
+    ch.setLevel(level)
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+    
+    # Create file handler and set level to debug
+    if log_file:
+        fh = logging.FileHandler(log_file)
+        fh.setLevel(level)
+        fh.setFormatter(formatter)
+        logger.addHandler(fh)
+    
+    return logger
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description='Description of your program')
     parser.add_argument('--L', type=int, help='An integer parameter L')
@@ -11,7 +35,13 @@ def parse_args():
     return args
 
 
+logger = setup_logger("logger", log_file="simulation.log", level=logging.DEBUG)
 # CEVSV model parameters
+args = parse_args()
+# simulation parameters
+M = args.M 
+N = args.N 
+L = args.L 
 v = eval(os.environ.get('V', '0.5'))  # 0.5 is Heston's model
 r = eval(os.environ.get('R', '0.04'))
 kappa = eval(os.environ.get('KAPPA', '1.5'))
@@ -21,14 +51,23 @@ lambda_ = eval(os.environ.get('LAMBDA_', '0.5'))
 rho = eval(os.environ.get('RHO', '-0.8'))
 gamma = eval(os.environ.get('GAMMA', '2'))
 
-### line 5 to line 28: set environment variables 
+t_0 = 0  # start time point
 
-print(
-    f'Parameter Sets: \
+t_M = eval(os.environ.get('T_M', '1'))  # end time point T
+y_0 = eval(os.environ.get('Y_0', '0.1'))  # minimal value of initial state y
+y_N = eval(os.environ.get('Y_N', '0.3'))  # maximal value of initial state y
+delta_t = (t_M-t_0)/M 
+delta_y = (y_N-y_0)/N
+assert np.allclose(t_M, t_0 + delta_t * M)
+assert np.allclose(y_N, y_0 + delta_y * N)
+sqrt_delta_t = np.sqrt(delta_t)
+
+### line 5 to line 28: set environment variables 
+logger.info(    f'Parameter Sets: \
 v = {v}; r = {r}; kappa = {kappa}; \
 theta = {theta}; sigmav = {sigmav}; \
-lambda_ = {lambda_}; rho = {rho}; gamma = {gamma}'
-)
+lambda_ = {lambda_}; rho = {rho}; gamma = {gamma}')
+
 
 # global constant expressions
 
@@ -302,29 +341,44 @@ def simu_thetau(theta_u, theta_uy, z1, z2):
 
         # output thetau value to show the progress
         if i % 10 == 0:
-            print(i, N // 4, theta_u[i, N // 4])
+            logger.info("%s %s %s", i, N // 4, theta_u[i][N // 4])
 
     # the simualted value of each path at the final time step
     # is returned in order to calculate standard error
     return xi, xiHtheta
 
 
+
+
+@nb.vectorize('float64(float64, float64)')
+def get_true_theta_u(tau, y):
+    """
+    Evaluate theta_u by the closed-form solution.
+    Use true theta_u as the benchmark for our reports.
+
+    :param tau: T - t, time to maturity
+    :param y: initial state
+    """
+    deltav = - (1 - gamma) * lambda_**2 / (2 * gamma**2)
+    ktilde = kappa - (1 - gamma) * lambda_ * sigmav * rho / gamma
+    xiv = np.sqrt(ktilde**2 + 2 * deltav * (rho**2 + gamma*(1 - rho**2)) * sigmav**2)
+
+    d_tau = -2 *deltav * (np.exp(xiv*tau) - 1) / ((ktilde + xiv)*(np.exp(xiv*tau) - 1) + 2 * xiv)
+
+    return - sqrt_1subrho2 * gamma * sigmav * np.sqrt(y) * d_tau
+
+
+
+
+
+
 if __name__ == '__main__':
-    args = parse_args()
-    # simulation parameters
-    M = args.M 
-    N = args.N 
-    L = args.L 
-    t_0 = 0  # start time point
-    t_M = eval(os.environ.get('T_M', '1'))  # end time point T
-    y_0 = eval(os.environ.get('Y_0', '0.1'))  # minimal value of initial state y
-    y_N = eval(os.environ.get('Y_N', '0.3'))  # maximal value of initial state y
-    delta_t = (t_M-t_0)/M 
-    delta_y = (y_N-y_0)/N
-    assert np.allclose(t_M, t_0 + delta_t * M)
-    assert np.allclose(y_N, y_0 + delta_y * N)
-    sqrt_delta_t = np.sqrt(delta_t)
     
+    
+    
+    
+    true_thetau = get_true_theta_u.outer(np.arange(M, -1, -1) * delta_t, np.arange(0, N+1)*delta_y + y_0)
+    print(true_thetau.shape)
 
         
 
@@ -345,12 +399,15 @@ if __name__ == '__main__':
 
     # start the simualtion
     xi, xiHtheta = simu_thetau(theta_u, theta_uy, z1, z2)
+    
+    theta_difference = theta_u - true_thetau
 
     # save result
     postfix = f'CEVSV;v{v};sigmav{sigmav};M{M};N{N};L{L};deltat{delta_t};deltay{delta_y};'
     np.savetxt(f'./Result/theta_u{postfix}.csv', theta_u, delimiter=',')
-    np.savetxt(f'./Result/xi{postfix}.csv', xi, delimiter=',')
-    np.savetxt(f'./Result/xiHtheta{postfix}.csv', xiHtheta, delimiter=',')
+    np.savetxt(f'./Result/true_theta_u{postfix}.csv', true_thetau, delimiter=',')
+    np.savetxt(f'./Result/diff_theta_u{postfix}.csv', theta_difference, delimiter=',')
+
 
     
 
