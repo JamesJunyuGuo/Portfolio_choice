@@ -6,7 +6,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # # Run the Python script from the same directory
 
-# python "$DIR/simulation_CEVSV.py" --M 1000 --L 2000 --N 100
+python simulation_CEVSV.py --M 2000 --L 6000 --N 200
 
 # python "$DIR/simulation_CEVSV.py" --M 500 --L 1000 --N 50
 
