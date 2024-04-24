@@ -1,4 +1,5 @@
-@cuda.jit
+import numpy as np 
+import numba as nb 
 def simu_thetau(theta_u, theta_uy, z1, z2):  
     zmix = (0.2 * z1 + 0.1 * z2)  
     L, M = zmix.shape[0], zmix.shape[1] - 1  
